@@ -1,0 +1,78 @@
+<div class="container justify-content-center">
+  <div class="row">
+    <div class="col-12 h-100 text-center my-5 py-5" *ngIf="checked">
+      <div class="alert alert-success">
+        <h1>Checked Successfuly</h1>
+      </div>
+    </div>
+  </div>
+  <div class="row my-5">
+    <ng-container *ngIf="!checked">
+      <div class="col-12 col-md-8">
+        <div class="row row-cols-1" *ngFor="let product of productsInCart">
+          <div class="card mb-3">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img [src]="product.image" class="img-fluid rounded-start" />
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">{{ product.title }}</h5>
+                  <p class="card-text">
+                    {{ product.price }}
+                  </p>
+                  <div class="row">
+                    <div class="col-4">
+                      <button
+                        (click)="decrease(product._id)"
+                        class="btn btn-primary"
+                      >
+                        -
+                      </button>
+                    </div>
+                    <div class="col-4">
+                      {{ getQTY(product._id) }}
+                    </div>
+                    <div class="col-4">
+                      <button
+                        (click)="increase(product._id)"
+                        class="btn btn-primary"
+                      >
+                        +
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <!--  - - - - - - - - - - order summary - - - - - - -->
+
+    <div class="col-12 col-md-4" *ngIf="!checked">
+      <div class="card p-5">
+        <h1 class="text-center mb-5">Sportio</h1>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item" *ngFor="let product of productsInCart">
+            <h3>{{ product.title }}</h3>
+            <p>{{ product.price }}</p>
+            <p>{{ getQTY(product._id) }}</p>
+          </li>
+        </ul>
+        <p>SubTotal : {{ getSubtotal() | currency }}</p>
+        <p>Total : 50</p>
+        <p>Cart Items :{{ cartItems.length }}</p>
+        <p>Shipping Fee : 50</p>
+        <p>Tax : 14%</p>
+        <p>Total : {{ getTotal() | currency }}</p>
+      </div>
+      <div class="d-block">
+        <button (click)="checkOut()" class="btn btn-outline-dark w-100 mt-3">
+          Check out
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

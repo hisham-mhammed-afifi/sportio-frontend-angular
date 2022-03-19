@@ -1,0 +1,89 @@
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+  <div class="container-fluid">
+    <img class="logo-img" src="assets/mainImgs/Logo.png" />
+    <a class="navbar-brand ps-3" routerLink="/">Sportio</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li> -->
+      </ul>
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <ng-container *ngIf="loggedIn && isAdmin">
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="/dashboard"
+              routerLinkActive="active"
+              >Dashboard</a
+            >
+          </li>
+        </ng-container>
+
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >Home</a
+          >
+        </li>
+        <ng-container *ngIf="!loggedIn">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/login" routerLinkActive="active"
+              >Login</a
+            >
+          </li>
+        </ng-container>
+        <ng-container *ngIf="loggedIn">
+          <li class="nav-item" (click)="logout()">
+            <button class="btn btn-light">Logout</button>
+          </li>
+        </ng-container>
+        <ng-container *ngIf="!loggedIn">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/register" routerLinkActive="active"
+              >Register</a
+            >
+          </li>
+        </ng-container>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/cart"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            ><button type="button" class="btn btn-light position-relative">
+              <img src="assets/mainImgs/cart-fill.svg" alt="cart" />
+              <ng-container *ngIf="cartLength > 0"
+                ><span
+                  class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                >
+                  {{ cartLength }}
+                </span></ng-container
+              ></button
+            ><!--  [{{ cartLength }}] Items -->
+          </a>
+        </li>
+
+        <!-- <li class="nav-item">
+          <a class="nav-link" routerLink="/contact" routerLinkActive="active"
+            >Contact us</a
+          >
+        </li> -->
+      </ul>
+    </div>
+  </div>
+</nav>

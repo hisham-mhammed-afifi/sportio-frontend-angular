@@ -1,0 +1,86 @@
+<ng-container *ngIf="showForm">
+  <div class="row justify-content-center my-3 mx-0">
+    <div class="col col-md-10">
+      <div class="card shadow py-3 px-2 p-sm-3">
+        <!-- [style.background]="'url(assets/mainImgs/form-background.jpg)'" -->
+        <form
+          [formGroup]="productForm"
+          (submit)="
+            product._id != undefined
+              ? updateProduct($event, product._id)
+              : addProduct($event)
+          "
+        >
+          <div class="mb-3">
+            <label for="formFile" class="form-label">Product image</label>
+            <input
+              (change)="onChange($event)"
+              (input)="onInput($event)"
+              class="form-control"
+              type="file"
+              id="formFile"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="title" class="form-label">Product title</label>
+            <input
+              formControlName="title"
+              type="text"
+              class="form-control"
+              id="title"
+            />
+          </div>
+          <!-- /////////////////////////////////////////// -->
+          <div
+            [hidden]="title?.valid || title?.untouched"
+            class="alert alert-danger"
+            role="alert"
+          >
+            <ng-container *ngIf="title?.errors?.['required']"
+              >Title field is Required.</ng-container
+            >
+          </div>
+          <!-- /////////////////////////////////////////// -->
+          <div class="mb-3">
+            <label for="price" class="form-label">Product price</label>
+            <input
+              formControlName="price"
+              type="number"
+              class="form-control"
+              id="price"
+            />
+          </div>
+          <!-- /////////////////////////////////////////// -->
+          <div class="mb-3">
+            <label for="inStock" class="form-label">Quantity</label>
+            <input
+              formControlName="inStock"
+              type="number"
+              class="form-control"
+              id="inStock"
+            />
+          </div>
+          <!-- /////////////////////////////////////////// -->
+          <!-- /////////////////////////////////////////// -->
+          <div class="input-group mb-3">
+            <!-- <label class="input-group-text">Category</label> -->
+            <select formControlName="categoryId" class="form-select">
+              <option *ngFor="let c of categories" [value]="c._id">
+                {{ c.name }}
+              </option>
+            </select>
+          </div>
+          <!-- /////////////////////////////////////////// -->
+
+          <button
+            [disabled]="productForm.invalid"
+            type="submit"
+            class="btn btn-success"
+          >
+            Add new product
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</ng-container>

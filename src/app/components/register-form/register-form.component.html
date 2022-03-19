@@ -1,0 +1,126 @@
+<div class="row justify-content-center my-5 mx-0">
+  <div class="col col-md-6">
+    <div class="card shadow py-5 px-2 p-sm-5">
+      <!-- [style.background]="'url(assets/mainImgs/form-background.jpg)'" -->
+      <h3 class="display-3">Register Form</h3>
+      <form [formGroup]="registerForm" (submit)="onSubmit()">
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input
+            formControlName="name"
+            [class.is-invalid]="isInvalid(name)"
+            [class.is-valid]="isValid(name)"
+            type="text"
+            class="form-control"
+            id="name"
+          />
+        </div>
+        <!-- /////////////////////////////////////////// -->
+        <div
+          [hidden]="name?.valid || name?.untouched"
+          class="alert alert-danger"
+          role="alert"
+        >
+          <ng-container *ngIf="name?.errors?.['required']"
+            >Name field is Required.</ng-container
+          >
+          <ng-container *ngIf="name?.errors?.['pattern']"
+            >Invalid, Name must be chars only small or capital.</ng-container
+          >
+        </div>
+        <!--  -->
+        <div class="mb-3">
+          <label for="email" class="form-label">Email address</label>
+          <input
+            formControlName="email"
+            [class.is-invalid]="isInvalid(email)"
+            [class.is-valid]="isValid(email)"
+            type="email"
+            class="form-control"
+            id="email"
+          />
+        </div>
+        <!-- /////////////////////////////////////////// -->
+        <div
+          [hidden]="email?.valid || email?.untouched"
+          class="alert alert-danger"
+          role="alert"
+        >
+          <ng-container *ngIf="email?.errors?.['required']"
+            >Email field is Required.</ng-container
+          >
+          <ng-container *ngIf="email?.errors?.['email']"
+            >Invalid, Please provide a valid Email.</ng-container
+          >
+        </div>
+        <!--  -->
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input
+            formControlName="password"
+            [class.is-invalid]="isInvalid(password)"
+            [class.is-valid]="isValid(password)"
+            type="password"
+            class="form-control"
+            id="password"
+          />
+        </div>
+        <!-- /////////////////////////////////////////// -->
+        <div
+          [hidden]="password?.valid || password?.untouched"
+          class="alert alert-danger"
+          role="alert"
+        >
+          <ng-container *ngIf="password?.errors?.['required']"
+            >Password field is Required.</ng-container
+          >
+          <ng-container
+            *ngIf="password?.errors?.['minlength'] || password?.errors?.['maxlength']"
+            >Password must be between 6 and 8 chars.</ng-container
+          >
+        </div>
+        <!--  -->
+        <div class="mb-3">
+          <label for="confirmPassword" class="form-label"
+            >Confirm Password</label
+          >
+          <input
+            formControlName="confirmPassword"
+            [class.is-invalid]="isInvalid(confirmPassword)|| registerForm.errors?.['misMatch']"
+            [class.is-valid]="isValid(confirmPassword)&& !registerForm.errors?.['misMatch']"
+            type="password"
+            class="form-control"
+            id="confirmPassword"
+          />
+        </div>
+        <!-- /////////////////////////////////////////// -->
+        <div
+          [hidden]="
+          !registerForm.errors?.['misMatch']&&
+            confirmPassword?.valid ||
+            confirmPassword?.untouched
+          "
+          class="alert alert-danger"
+          role="alert"
+        >
+          <ng-container *ngIf="confirmPassword?.errors?.['required']"
+            >Confirm Password field is Required.</ng-container
+          >
+
+          <ng-container
+            *ngIf="!confirmPassword?.errors?.['required'] && !confirmPassword?.errors?.['minlength'] && registerForm.errors?.['misMatch']"
+            >Password and Confirm Password Don't match</ng-container
+          >
+        </div>
+
+        <button
+          [disabled]="registerForm.invalid"
+          type="submit"
+          class="btn btn-primary px-5"
+        >
+          Register
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

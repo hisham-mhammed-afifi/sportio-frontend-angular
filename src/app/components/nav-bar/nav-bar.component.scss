@@ -1,0 +1,70 @@
+// @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+// $mainColor:#084667;
+
+// body{
+//   line-height: 1.5;
+// }
+// .navbar{
+//   background-color: $mainColor;
+//   padding: 1rem 2rem;
+//   min-height: 12vh;
+//   a{
+//     color: #ffff;
+//     text-decoration: none;
+//     font-weight: 500;
+//     font-size: 1.5rem;
+//   }
+//   a:hover{
+//     color: #ED612C;
+//     transition: 1;
+//   }
+//   .navbar-brand{
+//      img{
+//        width: 50px;
+//      }
+//   }
+//   .cutsomBrand{
+//       padding: 1rem 0;
+//       font-size: 2rem;
+//       transition: 0.5s;
+//       display: block;
+//       text-decoration: none;
+//       font-family: 'Permanent Marker', cursive;
+//   }
+//   .burgerColor{
+//     color: #FFFF;
+//     border: none;
+//     padding: 10px 6px;
+//     outline: none;
+//   }
+// }
+// .navbar-toggler {
+//   background: #ED612C;
+//   height: 2.5rem;
+//   border: none;
+//   outline: none;
+//   span{
+//     display: block;
+//     padding: 1px;
+//     width: 22px;
+//     height: 3px;
+//     border: 1px;
+//     background: #ffff;
+//   }
+//   span + span{
+//     margin-top: 6px;
+//     width: 22px;
+//     height: 3px;
+//     border: 1px;
+//     background: #ffff;
+
+//   }
+
+// }
+// .nav-link:active{
+//   color:aqua;
+// }
+
+.logo-img {
+  max-width: 50px;
+}

@@ -1,0 +1,21 @@
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 pt-3">
+  <div class="col" *ngFor="let product of products">
+    <div class="card mb-5">
+      <img [src]="product.image" class="card-img-top" />
+      <div class="card-body">
+        <h5 class="card-title">
+          <a routerLink="/productDetails/{{ product._id }}">{{
+            product.title
+          }}</a>
+        </h5>
+        <p class="card-title">Price : {{ product.price }}LE</p>
+      </div>
+      <button
+        (click)="addToCart($event, product._id)"
+        class="btn text-white Buy-btn"
+      >
+        Add to cart
+      </button>
+    </div>
+  </div>
+</div>

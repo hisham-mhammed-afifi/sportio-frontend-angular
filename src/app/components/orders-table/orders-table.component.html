@@ -1,0 +1,40 @@
+<div class="vh-100 justify-content-center">
+  <table class="table table-responsive">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">tax</th>
+        <th scope="col">shippin fee</th>
+        <th scope="col">subtotal</th>
+        <th scope="col">total</th>
+        <th scope="col">status</th>
+        <th scope="col">QTY</th>
+        <!-- <th scope="col"></th> -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orders; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ order.tax }}%</td>
+        <td>{{ order.shippingFee | currency }}</td>
+        <td>{{ order.subTotal | currency }}</td>
+        <td>{{ order.total | currency }}</td>
+        <td>
+          <span
+            class="badge"
+            [class.bg-success]="order.status == 'completed'"
+            [class.bg-warning]="order.status != 'completed'"
+            >{{ order.status }}</span
+          >
+        </td>
+        <td>{{ order.cartItems.length }}</td>
+
+        <!-- <td>
+          <div class="btn-group">
+            <button class="btn btn-sm btn-info text-white mx-2">Modify</button>
+          </div>
+        </td> -->
+      </tr>
+    </tbody>
+  </table>
+</div>

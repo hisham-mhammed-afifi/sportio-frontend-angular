@@ -1,0 +1,30 @@
+<table class="table table-responsive">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Role</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users; let i = index">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>{{ user.name }}</td>
+      <td>{{ user.email }}</td>
+      <td
+        [class.table-success]="user.role == 'admin'"
+        [class.table-secondary]="user.role == 'user'"
+      >
+        {{ user.role }}
+      </td>
+      <td>
+        <div class="btn-group">
+          <button class="btn btn-sm btn-info text-white mx-2">Modify</button>
+          <button class="btn btn-sm btn-danger mx-2">Remove</button>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,68 @@
+<div class="container mt-3">
+  <div class="Categories">
+    <div class="row row-cols pt-5 justify-content-center categoryItem">
+      <div
+        (click)="filterByCategory(categories[4]._id)"
+        class="col-6 pb-5 pb-sm-3 col-sm-3 col-md-2 text-center"
+      >
+        <img src="assets/mainImgs/categoryIcons/cardio.svg" />
+      </div>
+      <div
+        (click)="filterByCategory(categories[3]._id)"
+        class="col-6 pb-5 pb-sm-3 col-sm-3 col-md-2 text-center"
+      >
+        <img src="assets/mainImgs/categoryIcons/strength.svg" />
+      </div>
+      <div
+        (click)="filterByCategory(categories[2]._id)"
+        class="col-6 pb-5 pb-sm-3 col-sm-3 col-md-2 text-center"
+      >
+        <img src="assets/mainImgs/categoryIcons/apparel.svg" />
+      </div>
+      <div
+        (click)="filterByCategory(categories[0]._id)"
+        class="col-6 pb-5 pb-sm-3 col-sm-3 col-md-2 text-center"
+      >
+        <img src="assets/mainImgs/categoryIcons/bikes.svg" />
+      </div>
+      <div
+        (click)="filterByCategory(categories[1]._id)"
+        class="col-6 pb-5 pb-sm-3 col-sm-3 col-md-2 text-center"
+      >
+        <img src="assets/mainImgs/categoryIcons/footwear.svg" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="searchInput mb-3 mb-3 mx-3">
+          <input
+            type="text"
+            placeholder="Search Products..."
+            (input)="search($event)"
+          />
+          <span>
+            <img src="assets/mainImgs/searchIcon.svg" />
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ///////////////////////////////// -->
+  <div class="dropdown mt-3">
+    <button
+      class="btn btn-light dropdown-toggle"
+      type="button"
+      id="dropdownMenuButton1"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+    >
+      Sort By
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+      <li><a class="dropdown-item" href="#">Action</a></li>
+      <li><a class="dropdown-item" href="#">Another action</a></li>
+      <li><a class="dropdown-item" href="#">Something else here</a></li>
+    </ul>
+  </div>
+</div>

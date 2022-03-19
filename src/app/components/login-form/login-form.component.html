@@ -1,0 +1,71 @@
+<div class="row justify-content-center my-5 mx-0">
+  <div class="col col-lg-5 col-md-8 col-sm-10">
+    <div class="alert alert-danger" *ngIf="wrong">Wrong Email or Password</div>
+    <div class="card shadow p-5">
+      <h3 class="display-3">Login Form</h3>
+      <form [formGroup]="loginForm" (submit)="onSubmit($event)">
+        <div class="mb-3">
+          <label for="email" class="form-label">Email address</label>
+          <input
+            formControlName="email"
+            [class.is-invalid]="isInvalid(email)"
+            [class.is-valid]="isValid(email)"
+            type="email"
+            class="form-control"
+            id="email"
+          />
+        </div>
+        <!-- /////////////////////////////////////////// -->
+        <div
+          [hidden]="email?.valid || email?.untouched"
+          class="alert alert-danger"
+          role="alert"
+        >
+          <ng-container *ngIf="email?.errors?.['required']"
+            >Email field is Required.</ng-container
+          >
+          <ng-container *ngIf="email?.errors?.['email']"
+            >Invalid, Please provide a valid Email.</ng-container
+          >
+        </div>
+        <!--  -->
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input
+            formControlName="password"
+            [class.is-invalid]="isInvalid(password)"
+            [class.is-valid]="isValid(password)"
+            type="password"
+            class="form-control"
+            id="password"
+          />
+        </div>
+        <!-- /////////////////////////////////////////// -->
+        <div
+          [hidden]="password?.valid || password?.untouched"
+          class="alert alert-danger"
+          role="alert"
+        >
+          <ng-container *ngIf="password?.errors?.['required']"
+            >Password field is Required.</ng-container
+          >
+          <ng-container
+            *ngIf="password?.errors?.['minlength'] || password?.errors?.['maxlength']"
+            >Password must be between 3 and 5 chars.</ng-container
+          >
+        </div>
+        <div>
+          <small
+            >Don't Have An Account?
+            <a class="btn btn-link" routerLink="/register"
+              >Register Here</a
+            ></small
+          >
+        </div>
+        <!--  -->
+
+        <button type="submit" class="btn btn-primary px-5">Login</button>
+      </form>
+    </div>
+  </div>
+</div>

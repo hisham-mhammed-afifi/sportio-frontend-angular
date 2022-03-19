@@ -1,0 +1,17 @@
+<div class="card h-100">
+  <ng-content select="[cardImg]"></ng-content>
+  <!-- <img src="assets/mainImgs/blue_mobile.jpg" class="card-img-top" /> -->
+  <div class="card-body">
+    <h5 class="card-title">
+      <ng-content select="[cardTitle]"></ng-content>
+    </h5>
+    <p class="card-title text-info">
+      <ng-content select="[cardPrice]"></ng-content>
+    </p>
+  </div>
+  <div class="card-footer">
+    <a href="#" class="btn btn-primary">
+      <img class="cart-icon" src="assets/mainImgs/categoryIcons/cart.svg" />
+    </a>
+  </div>
+</div>

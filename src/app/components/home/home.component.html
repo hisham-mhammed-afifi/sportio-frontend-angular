@@ -1,0 +1,14 @@
+<app-header-component></app-header-component>
+<div class="container">
+  <app-categories
+    (searchProducts)="searchProducts($event)"
+    (filterProducts)="filterProducts($event)"
+  ></app-categories>
+  <ng-container *ngIf="products.length !== 0">
+    <app-products [products]="products"></app-products>
+  </ng-container>
+  <ng-container *ngIf="products.length === 0">
+    <h3 class="display-3 text-center my-5">There is NO Products matches</h3>
+  </ng-container>
+  <app-banners></app-banners>
+</div>

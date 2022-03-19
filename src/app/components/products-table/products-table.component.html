@@ -1,0 +1,54 @@
+<div class="justify-content-center">
+  <ng-container *ngIf="openForm">
+    <app-product-form [product]="product"></app-product-form>
+  </ng-container>
+  <ng-container *ngIf="!openForm">
+    <div class="row">
+      <div class="col-12">
+        <button (click)="toggleForm()" class="btn btn-success">
+          Add product
+        </button>
+      </div>
+    </div>
+  </ng-container>
+
+  <table class="table table-responsive">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Image</th>
+        <th scope="col">Title</th>
+        <th scope="col">Price</th>
+        <th scope="col">In Stock</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>
+          <img class="table-image" [src]="product.image" />
+        </td>
+        <td>{{ product.title }}</td>
+        <td>{{ product.price }}</td>
+        <td>{{ product.inStock }}</td>
+        <td>
+          <div class="btn-group">
+            <button
+              (click)="openForEdit(product._id)"
+              class="btn btn-sm btn-success mx-2"
+            >
+              Modify
+            </button>
+            <button
+              (click)="deleteProduct(product._id)"
+              class="btn btn-sm btn-danger mx-2"
+            >
+              Remove
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

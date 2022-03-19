@@ -1,0 +1,28 @@
+$primary: #1f1b1b;
+$secondary: #df393c;
+
+.card {
+  border-radius: 10px;
+}
+.card-img-top {
+  height: 300px;
+  width: 100%;
+  object-fit: scale-down;
+}
+
+.card-title {
+  a {
+    text-decoration: none;
+    font-weight: 500;
+  }
+}
+
+p {
+  color: rgb(236, 86, 16);
+  font-size: 20px;
+}
+
+.Buy-btn {
+  background-color: $primary;
+  outline: none !important;
+}
